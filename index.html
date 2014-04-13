@@ -20,12 +20,19 @@
     <div id="main-region" class="container">
       <<p>
         Here is static content in the web page. You'll notice that it gets replaced in our app as soon as we start it.
-        Line to test git.
       </p>
     </div>
 
-    <script type="text/template" id="static-template">
-      <p>This is text that was rendered by our Marionette app.</p>
+    <script type="text/template" id="contact-list">
+      <thead>
+        <tr><th>First Name</th><th>Last Name</th></tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </script>
+
+    <script type="text/template" id="contact-list-item">
+      <td><%= firstName %></td><td><%= lastName %></td>
     </script>
 
     <script src="./assets/js/vendor/jquery.js"></script>
@@ -33,23 +40,13 @@
     <script src="./assets/js/vendor/underscore.js"></script>
     <script src="./assets/js/vendor/backbone.js"></script>
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/entities/contact.js"></script>
+    <script src="./assets/js/apps/contacts/list/list_view.js"></script>
+    <script src="./assets/js/apps/contacts/list/list_controller.js"></script>
+
 
     <script type="text/javascript">
-      var ContactManager = new Marionette.Application();
-
-      ContactManager.addRegions({
-        mainRegion: "#main-region"
-      });
-
-      ContactManager.StaticView = Marionette.ItemView.extend({
-        template: "#static-template"
-      });
-
-      ContactManager.on("initialize:after", function() {
-        var staticView = new ContactManager.StaticView();
-        ContactManager.mainRegion.show(staticView);
-      });
-
       ContactManager.start();
     </script>
 
